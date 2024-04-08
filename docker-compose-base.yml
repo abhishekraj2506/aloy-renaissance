@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    restart: unless-stopped
+    volumes:
+      - ./data/monogdb:/data/db
+    ports:
+      - "27017:27017"
+
+  redis:
+    image: redis:6.2.5-alpine
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redis:/data
+
+  rabbitmq:
+    image: rabbitmq:3.9.11-management-alpine
+    container_name: rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:15672"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+    environment:
+      AMQP_URL: "amqp://rabbitmq?connection_attempts=3&retry_delay=5"
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest

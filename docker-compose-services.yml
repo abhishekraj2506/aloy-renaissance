@@ -1,0 +1,57 @@
+version: "3.8"
+
+services:
+
+  bap-proxy:
+    build: bap-proxy
+    restart: on-failure
+    container_name: bap-proxy
+    ports:
+      - "5001:5001"
+    expose:
+      - 5001
+  
+  bap-network:
+    build: bap-network
+    container_name: bap-network
+    restart: on-failure
+    ports:
+      - "5002:5002"
+    expose:
+      - 5002
+
+  bpp-network:
+    build: bpp-network
+    container_name: bpp-network
+    restart: on-failure
+    ports:
+      - "6002:6002"
+    expose:
+      - 6002
+
+  seller-service:
+    build: seller-service
+    container_name: seller-service
+    restart: on-failure
+    ports:
+      - "8001:8001"
+    expose:
+      - 8001
+
+  core-app:
+    build: core-app
+    container_name: core-app
+    restart: on-failure
+    ports:
+      - "8002:8002"
+    expose:
+      - 8002
+
+  nft-service:
+    build: nft-service
+    container_name: nft-service
+    restart: on-failure
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000

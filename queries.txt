@@ -1,0 +1,5 @@
+use aloy_seller
+db.createUser({	user: "aloy", pwd: "test", roles: [{role: "readWrite" , db:"aloy_seller"}] })
+
+use aloy_core
+db.createUser({	user: "aloy", pwd: "test", roles: [{role: "readWrite" , db:"aloy_core"}] })

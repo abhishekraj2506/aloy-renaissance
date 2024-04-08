@@ -1,0 +1,107 @@
+# Mandatory
+server:
+  port: 5001
+
+# Mandatory.
+cache:
+  host: "redis"
+  port: 6379
+  ttl: "PT10M"
+  # Optional. Default is 0.
+  db: 1
+
+# Optional.
+responseCache:
+  # mongoURL: "mongodb://root:test@mongodb:27017/protocolserver-v2-response-cache?authSource=admin"
+  mongoURL: "mongodb://mongodb:27017/protocolserver-v2-response-cache?authSource=admin"
+  ttl: "PT10M"
+
+# Mandatory.
+# Priority order will be
+# 1. Synchronous
+# 2. webhook
+# 3. pubSub
+client:
+  synchronous: 
+    # mongoURL: "mongodb://root:test@mongodb:27017/protocolserver-v2-response-cache?authSource=admin"
+    mongoURL: "mongodb://mongodb:27017/protocolserver-v2-response-cache?authSource=admin"
+
+# Mandatory.
+app:
+  # Mandatory.
+  mode: bap
+
+  # Two types of gateway mode present.
+  # client and network.
+  gateway:
+    mode: client
+    inboxQueue: "inbox"
+    outboxQueue: "outbox"
+    amqpURL: "amqp://guest:guest@rabbitmq:5672"
+
+  # Mandatory.
+  actions:
+    requests:
+      search:
+        ttl : "PT20S"
+      init:
+        ttl : "PT10S"
+      select:
+        ttl : "PT10S"
+      confirm:
+        ttl : "PT10S"
+      status:
+        ttl: "PT10S"
+      get_cancellation_reasons:
+        ttl: "PT10S"
+      get_rating_categories:
+        ttl: "PT10S"
+      
+    
+    responses: 
+      on_search:
+        ttl: "PT20S"
+      
+      on_init:
+        ttl: "PT10S"
+      on_select:
+        ttl: "PT10S"
+      on_confirm:
+        ttl: "PT10S"
+      on_status:
+        ttl: "PT10S"
+      cancellation_reasons:
+        ttl: "PT10S"
+      rating_categories:
+        ttl: "PT10S"
+  
+  # Mandatory.
+  publicKey: "coWWbYsO2iavaK7IveAuqQSCmnIcdKMdX5jQhCPrhrs="
+  privateKey: "7PRwIC/N4SudoBEICK/4BhxUG4Dc6to8U+noaCc3RC9yhZZtiw7aJq9orsi94C6pBIKachx0ox1fmNCEI+uGuw=="
+
+  # Mandatory.
+  subscriberId: "aloy-test-bap"
+  subscriberUri: "https://aloy-bap.loca.lt/"
+  
+  # Mandatory.
+  registryUrl: https://registry.becknprotocol.io/subscribers
+  auth: false
+  uniqueKey: "aloy_bap_key"
+  
+  # Mandatory.
+  city: "std:080"
+  country: "IND"
+
+  # Mandatory.
+  ttl: "PT10M"
+
+  # Mandatory.
+  httpTimeout: "PT6S"
+  httpRetryCount: 2
+  telemetry:
+    enabled: false
+    url: ""
+    batchSize: 100
+    # In minutes
+    syncInterval: 30
+    redis_db: 3

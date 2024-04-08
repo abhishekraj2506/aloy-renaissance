@@ -1,0 +1,126 @@
+# Mandatory
+server:
+  port: 6002
+
+# Mandatory.
+cache:
+  host: "redis"
+  port: 6379
+  ttl: "PT10M"
+  # Optional. Default is 0.
+  db: 0 
+
+# Optional.
+responseCache:
+  # mongoURL: "mongodb://root:test@mongodb:27017/bpp-network?authSource=admin"
+  mongoURL: "mongodb://mongodb:27017/bpp-network?authSource=admin"
+  ttl: "PT10M"
+
+# Mandatory.
+# Priority order will be
+# 1. Synchronous
+# 2. webhook
+# 3. pubSub
+client:
+
+  webhook:
+   url: "https://aloy-webhook.loca.lt"
+  #  url: "WEBHOOK" 
+
+# Mandatory.
+app:
+  # Mandatory.
+  mode: bpp
+
+  # Two types of gateway mode present.
+  # client and network.
+  gateway:
+    mode: network
+    inboxQueue: "inbox-bpp"
+    outboxQueue: "outbox-bpp"
+    amqpURL: "amqp://guest:guest@rabbitmq:5672"
+
+  # Mandatory.
+  actions:
+    requests:
+      search:
+        ttl : "PT15S"
+      init:
+        ttl : "PT10S"
+      select:
+        ttl : "PT10S"
+      confirm:
+        ttl : "PT10S"
+      status:
+        ttl : "PT10S"
+      track:
+        ttl : "PT10S"
+      cancel:
+        ttl : "PT10S"
+      update:
+        ttl : "PT10S"
+      rating:
+        ttl : "PT10S"
+      support:
+        ttl : "PT10S"
+      get_cancellation_reasons:
+        ttl: "PT10S"
+      get_rating_categories:
+        ttl: "PT10S"          
+    
+    responses: 
+      on_search:
+        ttl: "PT15S"
+      on_init:
+        ttl: "PT10S"
+      on_select:
+        ttl: "PT10S"
+      on_confirm:
+        ttl: "PT10S"
+      on_status:
+        ttl: "PT10S"
+      on_track:
+        ttl: "PT10S"
+      on_cancel:
+        ttl: "PT10S"
+      on_update:
+        ttl: "PT10S"
+      on_rating:
+        ttl: "PT10S"
+      on_support:
+        ttl: "PT10S"
+      cancellation_reasons:
+        ttl: "PT10S"
+      rating_categories:
+        ttl: "PT10S"          
+  
+  # Mandatory.
+  privateKey: "CFwWiWdb4RxU5rad4r6Tgsuc9XY4OdwR9F0a5sLtcyF4LKVfEJwfGJgrZEXDrStsRzD5nTvmG6tq47NiKgAesQ=="
+  publicKey: "eCylXxCcHxiYK2RFw60rbEcw+Z075hurauOzYioAHrE="
+
+  # Mandatory.
+  subscriberId: "aloy-test-bpp-network"
+  subscriberUri: "https://aloy-bpp-network.loca.lt"
+
+  # Mandatory.
+  registryUrl: https://registry.becknprotocol.io/subscribers
+  auth: false
+  uniqueKey: "aloy_bpp_network_key"
+  
+  # Mandatory.
+  city: "std:080"
+  country: "IND"
+
+  # Mandatory.
+  ttl: "PT10M"
+
+  # Mandatory.
+  httpTimeout: "PT3S"
+  httpRetryCount: 2
+  telemetry:
+    enabled: false
+    url: ""
+    batchSize: 100
+    # In minutes
+    syncInterval: 30
+    redis_db: 3
