@@ -58,6 +58,15 @@ BPP:
 
 ![alt text](images/core-arch.png)
 
+Let's take a quick look at the components:
+
+- **Core app** - The heart of Aloy. The consumer app interacts with Core-app through HTTP and Socket communication. The ONDC network is async, so requests are received and ack'ed by core-app and responses are sent back via socket (when received).
+- **NFT Service** - Handles everything related to onchain interactions. Receives requests from core-app and mints NFTs for users.
+- **BAP-Proxy** - Acts as a bridge between the Core app and the BAP Netowrk layer, enabling seamless communication and data exchange between these two components.
+- **BAP-Network** - Communicates with the Beckn Gateway to search for sellers in the network. It also talks directly to concerned BPP (async comms) for order related transactions (init, confirm, track, rating etc). It implements Beckn specs.
+- **BPP-Network** - BPP Network is a service with a Beckn API implementation that accepts requests from Gateway or BAP and forwards them to the seller-service for fulfillment.
+- **Seller-Service** - A prototype of a seller (restaurant) on network. Acts as an aggreagtor hosting multiple restaurants, maintains catalog and does order management. It is decoupled from BPP Network so as to separate business logic from Beckn specifications. It interacts with BPP Network asynchronously.
+
 
 ## The Flow
 
@@ -86,6 +95,9 @@ BPP:
 
 
     <img src="images/coupon-apply.gif" alt="drawing" width="200"/>
+
+
+> **_NOTE:_** The full app walkthrough video is available here - 
 
 
 ## What next?
