@@ -74,41 +74,39 @@ Let's take a quick look at the components:
 
     <img src="images/discovery.jpeg" alt="drawing" width="200"/>
 
-- This restaurant is currently hosted by the Seller-service, and is discovered through the Beckn Gateway.
+- This restaurant is currently hosted by the seller-service, and is discovered through the Beckn Gateway.
 
 - Once discovered, the BAP and BPP network layers communicate with each other in an async way to initiate and place an order.
 
     <img src="images/restaurant.jpeg" alt="drawing" width="200"/>
 
-- Once an order completes, user gets **Aloy points**. These points are also updated on a profile Soulbound NFT on the Solana blockchain. User can also get badges (NFTs) for different types of orders. For example, 10 Dosa orders in 1 month would get the user a **"Dosa Master"** badge.
+- Once a user places an order, they get **Aloy points**. These points are also updated on a profile Soulbound NFT on the Solana blockchain. Users can also get badges (NFTs) for different types of orders. For example, 10 Dosa orders in 1 month would get the user a **"Dosa Master"** badge.
 
     <img src="images/points.jpeg" alt="drawing" width="200"/> <img src="images/badges.jpeg" alt="drawing" width="200"/>
 
-- Points and badges are available onchain and can be used as a proof of consumer behavior and build reputation in a decentralised world.
+- Points and badges are available on-chain and can be used as proof of consumer behavior and build reputation in a decentralised world.
 
     <img src="images/solscan-1.jpeg" alt="drawing" width="200"/> <img src="images/solscan-2.jpeg" alt="drawing" width="200"/>  <img src="images/soulbound-nft.jpeg" alt="drawing" width="200"/>
 
 
-- User can use these points to purchase coupons from Aloy store. These coupons are then available to be auto-applied when the next order is placed with the restaurant.
+- Users can use these points to purchase coupons from the Aloy store. These coupons are then available to be auto-applied when the next order is placed with the restaurant.
 
     <img src="images/coupons.jpeg" alt="drawing" width="200"/> <img src="images/my-coupon.jpeg" alt="drawing" width="200"/>
 
 
-    <img src="images/coupon-apply.gif" alt="drawing" width="200"/>
 
-
-> **_NOTE:_** The full app walkthrough video is available here - 
+> **_NOTE:_** The full app walkthrough video is available here - https://www.youtube.com/watch?v=rBwwuwoYDDQ&t=170s
 
 
 ## What next?
 
-ONDC is still in its infancy and a lot of the infrastructure is yet to built. Following are some ideas about what could be built on top of Aloy.
+ONDC is still in its infancy and a lot of the infrastructure is yet to be built. Following are some ideas about what could be built on top of Aloy.
 
 ### Ratings and Review
 A decentralised network needs a fair ratings and review system. Blockchain-backed Aloy badges and NFTs offer a great way to filter out fake reviews as well as promote genuine ones. For example, a veteran-shopper with 10K+ AP and a "Biryani King" Badge is comparatively more trustworthy for his review of a food place.
 
 ### Smart Ledger For ONDC
-Metadata for transactions (non PII) can be maintained on Smart Ledger that drives the whole decentralized network. 
+Metadata for transactions (non-PII) can be maintained on a Smart Ledger that drives the whole decentralized network. 
 
 ### Ad-bidding System
 
