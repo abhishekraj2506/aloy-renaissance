@@ -1,6 +1,6 @@
-## Aloy 
+## Aloy (https://www.getaloy.in)
 
-Aloy (https://www.getaloy.in) is a loyalty platform for the ONDC network built using Solana for the future of e-commerce in India. 
+Aloy is a loyalty platform for the ONDC network built using Solana for the future of e-commerce in India. 
 
 Today, the 370,000+ sellers on ONDC do not have rewards and promotions infrastructure to retain loyal customers and attract new ones. For the customers, the current loyalty systems are too fragmented - It is very difficult to keep track of different kinds of points being given by different sellers and brands in the market. On top of that, it takes a long time to accumulate sufficient points for a meaningful reward (if any). 
 
@@ -9,15 +9,15 @@ Today, the 370,000+ sellers on ONDC do not have rewards and promotions infrastru
 
 The Aloy SDK helps any seller on the network to enable loyalty programs for their customers. The Aloy app helps end users track loyalty points for every purchase on the network irrespective of the purchase touchpoint.
 
-> **_NOTE:_** Note: This prototype is currently built for the Food & Beverage segment (particularly restaurants that serve online orders). This is just the beginning though - ONDC has penetrated multiple categories (Travel, Finance, Hospitality, etc.) and Aloy would work for all types of sellers and service providers on the network.
+> **_NOTE:_** This prototype is currently built for the Food & Beverage segment (particularly restaurants that serve online orders). This is just the beginning though - ONDC has penetrated multiple categories (Travel, Finance, Hospitality, etc.) and Aloy would work for all types of sellers and service providers on the network.
 
 
-## ONDC 
-ONDC(https://ondc.org/), or Open Network for Digital Commerce, is a government initiative in India aimed at creating a unified digital commerce infrastructure. It seeks to standardize and streamline processes for businesses, enabling seamless integration and interoperability across various digital platforms. ONDC aims to foster innovation, improve access to markets, and enhance the overall efficiency of the digital commerce ecosystem in India.
+## ONDC (https://ondc.org/)
+ONDC or Open Network for Digital Commerce is a government initiative in India aimed at creating a unified digital commerce infrastructure. It seeks to standardize and streamline processes for businesses, enabling seamless integration and interoperability across various digital platforms. ONDC aims to foster innovation, improve access to markets, and enhance the overall efficiency of the digital commerce ecosystem in India.
 
 ONDC is built on top of **Beckn Protocol**.
 
-## Beckn Protocol
+## Beckn Protocol (https://becknprotocol.io/)
 
 Beckn (short for beckn protocol) is an open protocol for decentralized commerce. It consists of several specifications for building open e-commerce networks across which sellers and their offers are universally discoverable from any Beckn-enabled app or platform. As a protocol, Beckn is multi-layered, with layer structure and organization resembling that of HTTP.
 
@@ -45,7 +45,7 @@ Aloy serves as a Technology Service Provider for Seller platforms built on ONDC 
 
 <img src="images/aloy-trilogy.png" alt="drawing" width="500" />
 
-This project contains sample implementation of both BAP and BPP layers on the ONDC front. We have used the registry (https://registry.becknprotocol.io/login) and Gateway available in the developer ecosystem to register both the actors on the network. So inherently, for demonstration purposes, we have developed both the buyer and seller apps and registered them on the network, which means they communicate using Beckn protocol specs and are available on the registry. 
+This project contains sample implementations of both BAP and BPP layers on the ONDC front. We have used the registry (https://registry.becknprotocol.io/login) and Gateway available in the developer ecosystem to register both the actors on the network. So inherently, for demonstration purposes, we have developed both the buyer and seller apps and registered them on the network, which means they communicate using Beckn protocol specs and are available on the registry. 
 
 BAP:
 ![BAP registry entry](images/aloy-bap.png)
@@ -61,9 +61,9 @@ BPP:
 Let's take a quick look at the components:
 
 - **Core app** - The heart of Aloy. The consumer app interacts with Core-app through HTTP and Socket communication. The ONDC network is async, so requests are received and ack'ed by core-app and responses are sent back via socket (when received).
-- **NFT Service** - Handles everything related to onchain interactions. Receives requests from core-app and mints NFTs for users.
+- **NFT Service** - Handles everything related to Solana onchain interactions. Receives requests from core-app and mints NFTs for users. Currently supports **Devnet**.
 - **BAP-Proxy** - Acts as a bridge between the Core app and the BAP Netowrk layer, enabling seamless communication and data exchange between these two components.
-- **BAP-Network** - Communicates with the Beckn Gateway to search for sellers in the network. It also talks directly to concerned BPP (async comms) for order related transactions (init, confirm, track, rating etc). It implements Beckn specs.
+- **BAP-Network** - Communicates with the Beckn Gateway to search for sellers in the network. It also talks directly to concerned BPP (async comms) for order related transactions (init, confirm, track, rating etc.). It implements Beckn specs.
 - **BPP-Network** - BPP Network is a service with a Beckn API implementation that accepts requests from Gateway or BAP and forwards them to the seller-service for fulfillment.
 - **Seller-Service** - A prototype of a seller (restaurant) on network. Acts as an aggreagtor hosting multiple restaurants, maintains catalog and does order management. It is decoupled from BPP Network so as to separate business logic from Beckn specifications. It interacts with BPP Network asynchronously.
 
